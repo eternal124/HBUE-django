@@ -1,1 +1,1 @@
-# HBUE-django
+# HBUE评课
