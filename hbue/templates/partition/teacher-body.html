@@ -1,0 +1,30 @@
+<!--教师页面-->
+<div class="container row float-element">
+    <div class="col-md-8 big_content">
+        <div class="inline-h3">
+            <span class="blue h3">课程</span>
+            <span class="text-muted">(共{{ courseNum }}门)</span>
+        </div>
+        {% for teacherCourse in teacherCourses %}
+        <div class="ud-pd-md2 dashed">
+            <span class="blue">
+                <a class="px16" href="/course/{{ teacherCourse.courseOnlyId }}">{{ teacherCourse.clss.className}}</a>
+            </span>
+            <div class="ud-pd-sm blue">
+                {% include "star.html" %}
+                <span class="rl-pd-sm h4">{{ teacherCourse.lastRate}}.0</span>
+                <span class="text-muted px12">（{{ teacherCourse.commentNum }}人评价）</span> <!-- 评价人数-->
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!--简介-->
+    <div class="col-md-4">
+        <div class="ud-pd-md2 dashed">
+            <img class="avatar-lg circle" src="/static/img/{{ teacher.teacherId }}">
+            <h3 class="blue">{{ teacher.teacherName }}</h3>
+            <p>教师主页：暂无</p>
+        </div>
+    </div>
+</div>

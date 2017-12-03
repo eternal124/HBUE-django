@@ -1,0 +1,9 @@
+{% extends "base.html"%}{# 继承父模版 #}
+
+{% block title%}
+    {{ courseName }}({{teacherName}})
+{% endblock %}
+
+{% block body%}{# 评论区 #}
+    {% include "course-body.html" %}
+{% endblock %}

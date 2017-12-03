@@ -1,0 +1,43 @@
+<div class="container row float-element">
+    <div class="col-md-8">
+        <div class="big_content">
+            <div class="inline-h3">
+                <span class="blue h3">关注</span>
+                <span class="text-muted">（2门）</span>
+            </div>
+            {% for comment in comments %}
+            <div class="ud-pd-md2 dashed">
+                <div class="ud-pd-sm">
+                    <a href="/course/{{ comment.courseOnlyId }}">{{ comment.courseName }}({{ comment.teacherName }})</a>
+                    <span class="text-muted small float-right">{{ comment.commentTime }}</span>
+                </div>
+                <p class="dark-grey">
+                    {{ comment.detail }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!--简介-->
+    <div class="col-md-4">
+        <div class="ud-pd-md2">
+            <img class="avatar-lg circle" src="img/user.png">
+            <h3 class="blue">swiftiemooc</h3>
+            <ul class="list-unstyled dark-grey">
+                <li class="ud-pd-sm">简介：None</li>
+                <li class="ud-pd-sm" style="overflow: hidden">博客：暂无</li>
+                <li class="ud-pd-sm">推荐了
+                    <strong>
+                        <a href="/user/{{ userId }}/follow/">2</a>
+                    </strong>门课程
+                </li>
+                <li class="ud-pd-sm">点评了
+                    <strong>
+                        <a href="/user/{{ userId }}/comments/">4</a>
+                    </strong>门课程
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+
+{% extends "base.html"%}{# 继承父模版 #}
+
+{% block title%}
+    {{ user.userName }}-个人信息
+{% endblock %}
+
+{% block body%}{# 评论区 #}
+    {% include "user-body.html" %}
+{% endblock %}

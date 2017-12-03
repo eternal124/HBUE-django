@@ -1,0 +1,47 @@
+<!--翻页-->
+<nav>
+    <ul class="pagination">
+        {% if current_page > 1 %}
+        <li>
+            <a href="?page={{ current_page|add:-1 }}" aria-label="Previous">
+                <span aria-hidden="false"><<</span>
+            </a>
+        </li>
+        {% else %}
+         <li class="disabled">
+             <span aria-hidden="true"><<</span>
+         </li>
+        {% endif %}
+
+        {% if urlNum > 5 %}
+            <li> <a href="?page=1"> 1 </a> </li>
+            <li> ... </li>
+        {% endif %}
+
+        {% for i in page_list %}
+            {% if i == current_page %}
+            <li class="active">
+                <a href="?page={{ i }}">
+                    {{ i }}
+                    <span class="sr-only">(current)</span>
+            {% else %}
+            <li>
+                <a href="?page={{ i }}"> {{ i }}
+            {% endif %}
+                </a>
+            </li>
+        {% endfor %}
+
+        {% if current_page < last_page %}
+        <li>
+            <a href="?page={{ current_page|add:1 }}" aria-label="Next">
+                <span aria-hidden="false">>></span>
+            </a>
+        </li>
+        {% else %}
+        <li  class="disabled">
+            <span aria-hidden="true">>></span>
+        </li>
+        {% endif %}
+    </ul>
+</nav>

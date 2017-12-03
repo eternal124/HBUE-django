@@ -1,0 +1,10 @@
+
+{% extends "base.html"%}{# 继承父模版 #}
+
+{% block title%}
+    {{ teacherName }}
+{% endblock %}
+
+{% block body%}{# 评论区 #}
+    {% include "teacher-body.html" %}
+{% endblock %}

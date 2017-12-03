@@ -1,0 +1,71 @@
+<!--修改个人信息-->
+<div class="container row float-element">
+    {# 修改头像 #}
+    <div class="col-md-4">
+        <h3 class="blue"><a href="/user/inner/{{ user.userId }}">{{ user.userName }}</a></h3>
+        <div class="ud-pd-md2">
+            <img class="avatar-lg circle" src="/static/img/{{ user.userIcon }}">
+            <hr>
+            <span class="btn btn-primary fileinput-button">
+                <span>上传头像</span>
+                <input type="file" id="thumbnail">
+            </span>
+        </div>
+    </div>
+    {# 修改其他信息 #}
+    <div class="col-md-8 big_content">
+        <div class="inline-h3">
+            <span class="blue h4">
+                <strong>完善信息</strong>
+            </span>
+        </div>
+        <hr>
+        <form class="form-horizontal" method="post" action=""> {# "" 表示提交到当前页面 #}
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">用户ID</label>
+                <div class="col-sm-5 form-control">
+                    {{ user.userId }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">学院</label>
+                <div class="col-sm-5 form-control">
+                    {{ user.academy }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">用户等级</label>
+                <div class="col-sm-5 form-control">
+                    {{ user.level }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">用户昵称</label>
+                <div class="col-sm-5">
+                    <input type="text" name="username" class="form-control" value="{{ user.userName }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">用户电话</label>
+                <div class="col-sm-5">
+                    <input type="text" name="username" class="form-control" value="{{ user.phone }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="introduction" class="col-sm-2 control-label">个人简介</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" id="introduction-text" rows="5" style="resize: none">{{ user.userInfo }}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <button type="submit" class="btn btn-primary btn-block">保存</button>
+                </div>
+                <div class="">
+                    <button type="button" class="btn btn-primary btn-block">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

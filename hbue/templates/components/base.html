@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HBUE评课系统-{% block title %}{% endblock %}</title>
+
+    {% load staticfiles %}
+    {% include "common-head.html" %}
+
+</head>
+<body>
+    <div id="wrap">
+        {% include "common-nav.html" %}
+        {% block body %} {% endblock %} {# 主体 #}
+        {% include "common-footer.html" %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<div class="container row float-element">
+        <div class="col-md-8">
+            <div class="big_content">
+                <div class="inline-h3">
+                    <span class="blue h4">
+                        <strong>点评</strong>
+                        （{{commentNum}}门）
+                    </span>
+                    <span class="float-right">
+                        <a href="/user/{{ user.userId }}/comments/">查看更多>></a>
+                    </span>
+                </div>
+
+                <!--评论内容-->
+                {% for comment in comments %}
+                    <div class="ud-pd-md2 dashed">
+                        <div class="ud-pd-sm">
+                            <a href="/course/{{ comment.course.courseOnlyId }}/">{{ comment.course.clss.className }}（{{comment.course.teacher.teacherName}}）</a> <!--name 包括课程名和老师名-->
+                            <span class="text-muted small float-right">{{ comment.commentTime|date:"Y-m-d H:i:s" }}</span> <!--评论时间-->
+                        </div>
+                        <p class="dark-grey">
+                            {{ comment.comment }} <!--评论内容-->
+                            <a href="/course/{{ comment.course.courseOnlyId }}/#comment-{{ comment.id}}">>>更多</a>
+                        </p>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <!--关注-->
+            <div class="big_content">
+                <div class="inline-h3">
+                    <a href="/user/{{ user.userId }}/follow/">
+                        <span class="blue h4">
+                            <strong>关注</strong>&nbsp;&nbsp;（{{ likeNum }}门）
+                        </span>
+                    </a>
+                </div>
+                <p class="text-muted">可以关注喜欢的课程哦！</p>
+            </div>
+
+        </div>
+
+        <!--简介-->
+        <div class="col-md-4 ud-pd-md2">
+            <img class="avatar-lg circle" src="/static/img/{{ user.userIcon }}">
+            <h3 class="blue">{{ user.userName }}</h3>
+            <ul class="list-unstyled dark-grey">
+                <li class="ud-pd-sm">简介：{{ user.userInfo }}</li>
+                <li class="ud-pd-sm" style="overflow: hidden">博客：暂无</li>
+                <li class="ud-pd-sm">推荐了
+                    <strong>
+                        <a href="/user/{{ user.userId }}/follow/">{{ likeNum }}</a>
+                    </strong>门课程
+                </li>
+                <li class="ud-pd-sm">点评了
+                    <strong>
+                        <a href="/user/{{ user.userId }}/comments/">{{ commentNum }}</a>
+                    </strong>门课程
+                </li>
+            </ul>
+        </div>
+</div>

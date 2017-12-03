@@ -1,0 +1,7 @@
+{% for i in lastRate_list %}
+    {% if i <= course.lastRate %}
+        <span class="glyphicon glyphicon-star glyphicon-lg" aria-hidden="true"></span>
+    {% else %}
+        <span class="glyphicon glyphicon-star glyphicon-lg-empty" aria-hidden="true"></span>
+    {% endif %}
+{% endfor %}

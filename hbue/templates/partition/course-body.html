@@ -1,0 +1,117 @@
+<!--详细课程-->
+<div class="container row float-element">
+    <!--课程详细信息-->
+    <div class="col-md-8 inline-h3">
+        <span class="blue h3">{{ course.clss.className }}({{ course.teacher.teacherName }})</span>
+        <hr>
+        <div class="ud-pd-sm blue">
+            {% include "star.html" %}
+            <span class="rl-pd-sm h4">{{ course.lastRate }}.0</span>
+            <span class="rl-pd-sm text-muted">({{ course.commentNum }}人评价)</span>
+        </div>
+        {% include "rate.html" %}
+
+        <!--课程信息-->
+        <table class="table table-condensed" rules="none">
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>学科类别：</strong>
+                         {{ course.clss.classClass}}
+                    </td>
+                    <td>
+                        <strong>学分：</strong>
+                         {{ course.clss.credit }}
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <strong>开设学院：</strong>
+                         {{ course.clss.academy }}
+                    </td>
+                    <td>
+                        <strong>容纳人数：</strong>
+                         {{ course.clss.capacity }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--推荐按钮-->
+        <div id="action-btn-group" class="ud-pd-md2">
+            <button id="like" class="btn btn-white btn-flat">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">
+                 </span>&nbsp;&nbsp;推荐
+                <small>(<span class="count1">0</span>)</small>
+            </button>
+            <button id="unlike" class="btn btn-white btn-flat">
+                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"> </span>&nbsp;&nbsp;不推荐
+                <small>(<span class="count2">0</span>)</small>
+            </button>
+        </div>
+
+        <!--点评 + 按钮-->
+        <div class="solid ud-pd-md2 inline-h3">
+            <span class="blue h3">点评</span>
+            <button class="btn btn-white float-right blue vmodal">
+                <span class="glyphicon glyphicon-pencil glyphicon-sm right-pd-sm" aria-hidden="true"></span>&nbsp;写点评
+            </button>
+        </div>
+
+        <!--学生评论-->
+        {% for comment in comments %}
+        <div class="ud-pd-md2 dashed">
+            <div class="blue ud-pd-sm">
+                <span class="right-pd-sm px16">
+                    <a href="/user/{{ comment.user.userId }}">{{ comment.user.userName }}</a>
+                </span>
+                {% include "star.html" %}
+            </div>
+
+            <div>
+                <p>{{ comment.comment }}</p>
+            </div>
+
+            <div class="bm-pd-md grey">
+                <span class="small">{{ comment.commentTime|date:"Y-m-d H:i:s" }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!--个人简介、其他老师的课、这个课的其他老师-->
+    <div class="col-md-4">
+        <!--个人简介-->
+        <div class="ud-pd-md2 dashed">
+            <img class="avatar-lg circle" src="/static/img/{{ course.teacher.teacherIcon }}">
+            <h3 class="blue">
+                <a href="/teacher/{{ course.teacher.teacherId }}">{{ course.teacher.teacherName }}</a>
+            </h3>
+        </div>
+        <!--教这门课的其他老师-->
+        <div class="ud-pd-md2 dashed">
+            <h4 class="blue">其他老师的{{ course.clss.className }}课</h4>
+            {% for otherTeacher in otherTeachers %}
+                {% if otherTeacher.teacher.teacherId != course.teacher.teacherId %}
+                <div class="ud-pd-sm">
+                    <a href="/course/{{ otherTeacher.courseOnlyId }}">{{ otherTeacher.teacher.teacherName }}</a>
+                    <span class="float-right grey">{{ otherTeacher.lastRate }}.0</span>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!--这个老师教的其他课-->
+        <div class="ud-pd-md dashed">
+            <h4 class="blue">{{ course.teacher.teacherName}}的其他课</h4>
+            {% for otherCourse in otherCourses %}
+                {% if otherCourse.clss.classId != course.clss.classId %}
+                <div class="ud-pd-sm">
+                    <a href="/course/{{ otherCourse.courseOnlyId }}">{{ otherCourse.clss.className }}</a>
+                    <span class="float-right grey">{{ otherCourse.lastRate }}.0</span>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

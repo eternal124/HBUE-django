@@ -1,0 +1,40 @@
+<!--评论区-->
+<div class="container row float-element">
+    <!--评论区内容-->
+    <div class="big_content">
+        {% if isSearch %}{# 判断是搜索出来的多门课程，还是点击“课程”的所有热门课程 #}
+            <h4 class="blue desktop">搜索「{{ cOrtName }}」</h4>
+        {% else %}
+            <h4 class="blue desktop">热门课程</h4>
+        {% endif %}
+
+        <div class="ud-pd-sm margin_bottom">
+            <span class="text-muted"> 共{{ courseNum }}门课（当前第{{ current_page }}页）</span>
+        </div>
+
+        <!-- 课程总评 -->
+        <div class="col-md-4">
+            {% for course in courses %}
+                <div class="panel panel-default">
+                    <div class="panel-heading row">
+                        <div class="col-sm-2">
+                            <div class="rate-box">{{ course.likes }}</div>
+                        </div>
+                        <div class="bm-pd-md col-sm-10">
+                            <a class="px16" href="/course/{{ course.courseOnlyId }}">{{ course.clss.className }}({{ course.teacher.teacherName }})</a>
+                            <div class="ud-pd-sm blue">
+                                {% include "star.html" %}
+                                <span class="rl-pd-sm h4">{{ course.lastRate }}.0</span>
+                                <span class="text-muted px12">({{ course.commentNum }} 人评价)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-middle">
+                        {% include "rate.html" %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% include "common-flipPage.html" %}
+</div>

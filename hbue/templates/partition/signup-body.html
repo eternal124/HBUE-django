@@ -1,0 +1,63 @@
+<!--注册-->
+<div class="container">
+    <div class="row float-element">
+        <h3 class="blue">注册</h3>
+        <hr>
+        <form class="form-horizontal" method="post" action=""> {# "" 表示提交到当前页面 #}
+            {% csrf_token %}
+            <div id="academy" class="form-group">
+                <label for="{{ form.academy.id_for_label }}" class="col-sm-2 control-label">学院: </label>
+                <div class="col-sm-4">
+                    {{ form.academy }}
+                </div>
+            </div>
+
+            <div id="userid" class="form-group">
+                <label for="{{ form.academy.id_for_label }}" class="col-sm-2 control-label">账号: </label>
+                <div class="col-sm-4">
+                    {{ form.userId }}
+                </div>
+                <span style="color:red;"  class="col-sm-2 control-label">{{ err.userId }}</span>
+            </div>
+
+            <div id="username" class="form-group">
+                <label for="{{ form.academy.id_for_label }}" class="col-sm-2 control-label">用户名：</label>
+                <div class="col-sm-4">
+                    {{ form.userName }}
+                </div>
+                <span style="color:red;" class="col-sm-2 control-label">{{ err.userName }}</span>
+            </div>
+
+            <div id="password" class="form-group">
+                <label for="{{ form.academy.id_for_label }}" class="col-sm-2 control-label">密码: </label>
+                <div class="col-sm-4">
+                    {{ form.password }}
+                </div>
+                <span style="color:red;" class="col-sm-2 control-label">{{ err.password }}</span>
+
+            </div>
+
+            <div id="repassword" class="form-group">
+                <label for="{{ form.academy.id_for_label }}" class="col-sm-2 control-label">确认密码: </label>
+                <div class="col-sm-4">
+                    {{ form.repassword }}
+                </div>
+                <span style="color:red;"  class="col-sm-2 control-label">{{ err.repassword }}</span>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <button type="submit" class="btn btn-primary btn-block">注册</button>
+                </div>
+            </div>
+        </form>
+        <div class="row ud-pd-md2">
+            <div class="col-sm-offset-2 col-sm-4">
+                <span class="text-muted">
+                    已有账号？
+                    <a href="/signin">马上登录</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

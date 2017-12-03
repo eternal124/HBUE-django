@@ -1,0 +1,27 @@
+
+{# 频率显示 #}
+<ul class="text-muted list-inline list-unstyled">
+    {% if course.callRate < 4 %}
+        <li>点名频率 ：&nbsp;&nbsp;较低</li>
+    {% elif course.callRate < 8 %}
+        <li>点名频率 ：&nbsp;&nbsp;适中</li>
+    {% else %}
+        <li>点名频率 ：&nbsp;&nbsp;较高</li>
+    {% endif %}
+
+    {% if course.passRate < 4 %}
+        <li>通过率 ：&nbsp;&nbsp;较低</li>
+    {% elif course.passRate < 8 %}
+        <li>通过率 ：&nbsp;&nbsp;适中</li>
+    {% else %}
+        <li>通过率 ：&nbsp;&nbsp;较高</li>
+    {% endif %}
+
+    {% if course.getRate < 4 %}
+        <li>收获大小 ：&nbsp;&nbsp;较低</li>
+    {% elif course.getRate < 8 %}
+        <li>收获大小 ：&nbsp;&nbsp;中等</li>
+    {% else %}
+        <li>收获大小 ：&nbsp;&nbsp;较高</li>
+    {% endif %}
+</ul>

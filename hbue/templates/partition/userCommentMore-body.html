@@ -1,0 +1,20 @@
+<div class="container row float-element big_content">
+    <div class="inline-h3">
+        <span class="blue h3">
+            <a href="/user/{{ userId }}">swiftiemooc</a>&nbsp;&nbsp;点评
+        </span>(4门)
+    </div>
+
+    {% for comment in comments %}
+        <div class="ud-pd-md2 dashed">
+            <div class="ud-pd-sm">
+                <a href="/course/{{ comment.courseOnlyId }}">{{ comment.courseName}}({{comment.teacherName }})</a> <!--课程名（老师名）-->
+                <span class="text-muted small float-right desk">{{ comment.time }}</span> <!--点评时间-->
+            </div>
+            <p class="dark-grey">
+                {{ comment.detail }} <!--有字数限制-->
+                <a href="/course/{{ comment.courseOnlyId }}/#comment-{{ comment.commentId }}">>>more</a>
+            </p>
+        </div>
+    {% endfor %}
+</div>
